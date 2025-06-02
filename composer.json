@@ -1,6 +1,6 @@
 {
     "name": "missionx-co/cva-php",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Class Variance Authority implementation in PHP",
     "keywords": [
         "Mission X",

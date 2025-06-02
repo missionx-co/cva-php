@@ -10,7 +10,7 @@ class ClassVariantAuthority
     public Config $config;
 
     public function __construct(
-        public array|string $base,
+        public array|string $base = '',
         /**
          * @var array<int, \MissionX\ClassVariantAuthority\Variant>
          */
@@ -30,6 +30,13 @@ class ClassVariantAuthority
     public function withConfig(Config $config): static
     {
         $this->config = $config;
+
+        return $this;
+    }
+
+    public function setBase(string $base): static
+    {
+        $this->base = $base;
 
         return $this;
     }
