@@ -85,7 +85,7 @@ class ClassVariantAuthority
             $classes[] = $compoundVariant->classes();
         }
 
-        return $this->merger()->merge($classes);
+        return $this->merger()->merge($classes, $props['class'] ?? '');
     }
 
     public function __invoke(array $props = [])
