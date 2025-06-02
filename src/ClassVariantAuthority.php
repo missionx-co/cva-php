@@ -83,11 +83,12 @@ class ClassVariantAuthority
         $classes = [
             $this->base,
         ];
-        foreach ($props as $name => $value) {
-            if (! isset($this->variants[$name])) {
+
+        foreach ($this->variants as $name => $variant) {
+            if (! isset($props[$name])) {
                 continue;
             }
-            $classes[] = $this->variants[$name]->resolve($value);
+            $classes[] = $variant->resolve($props[$name]);
         }
 
         foreach ($this->compoundVariants as $compoundVariant) {

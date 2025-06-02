@@ -75,7 +75,7 @@ class ClassVariantAuthorityTest extends TestCase
             ]);
 
         $this->assertEquals(
-            'px-4 py-3 bg-blue-100 border text-lg',
+            'bg-blue-100 px-4 py-3 border text-lg',
             $cva([
                 'color' => 'primary',
                 'size' => 'lg',
