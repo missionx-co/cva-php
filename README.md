@@ -61,7 +61,7 @@ use MissionX\ClassVariantAuthority\Variant;
 use MissionX\ClassVariantAuthority\Option;
 
 $button = ClassVariantAuthority::make()
-    ->whereBase('text-sm px-3 py-2 rounded-md')
+    ->setBase('text-sm px-3 py-2 rounded-md')
     ->addVariant(
         Variant::make('color')
             ->add('primary', 'bg-blue-500 text-white')
@@ -114,13 +114,13 @@ $config->cache = new YourCacheImplementation();
 
 // Create instance with config
 $button = ClassVariantAuthority::withConfig($config)
-    ->whereBase('text-base')
+    ->setBase('text-base')
     // Add variants...
     ;
 
 // Or add config to existing instance
 $button = ClassVariantAuthority::make()
-    ->whereBase('text-base')
+    ->setBase('text-base')
     ->setConfig($config);
 ```
 

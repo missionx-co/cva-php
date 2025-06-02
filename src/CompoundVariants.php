@@ -47,7 +47,7 @@ class CompoundVariants
 
         return implode(
             '|',
-            array_keys(
+            array_values(
                 $this->conditions
             )
         );

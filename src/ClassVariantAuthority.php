@@ -40,7 +40,7 @@ class ClassVariantAuthority
         return $this;
     }
 
-    public function whereBase(string|array $base): static
+    public function setBase(string|array $base): static
     {
         $this->base = $base;
 
@@ -98,7 +98,7 @@ class ClassVariantAuthority
             $classes[] = $compoundVariant->classes();
         }
 
-        return $this->merger()->merge($classes, $props['class'] ?? '');
+        return $this->merger()->merge($this->flatten($classes), $props['class'] ?? '');
     }
 
     public function __invoke(array $props = [])
@@ -162,5 +162,15 @@ class ClassVariantAuthority
         }
 
         return $this;
+    }
+
+    protected function flatten(array $array)
+    {
+        $return = [];
+        array_walk_recursive($array, function ($a) use (&$return) {
+            $return[] = $a;
+        });
+
+        return $return;
     }
 }
