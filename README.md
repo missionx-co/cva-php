@@ -60,7 +60,8 @@ use MissionX\ClassVariantAuthority\CompoundVariants;
 use MissionX\ClassVariantAuthority\Variant;
 use MissionX\ClassVariantAuthority\Option;
 
-$button = ClassVariantAuthority::base('text-sm px-3 py-2 rounded-md')
+$button = ClassVariantAuthority::make()
+    ->whereBase('text-sm px-3 py-2 rounded-md')
     ->addVariant(
         Variant::make('color')
             ->add('primary', 'bg-blue-500 text-white')
@@ -111,9 +112,16 @@ $config->tailwindMergeConfig = [
 // Add cache for better performance
 $config->cache = new YourCacheImplementation();
 
-$button = ClassVariantAuthority::base('text-base')
+// Create instance with config
+$button = ClassVariantAuthority::withConfig($config)
+    ->whereBase('text-base')
     // Add variants...
-    ->withConfig($config);
+    ;
+
+// Or add config to existing instance
+$button = ClassVariantAuthority::make()
+    ->whereBase('text-base')
+    ->setConfig($config);
 ```
 
 ## Credits

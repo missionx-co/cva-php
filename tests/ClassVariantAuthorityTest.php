@@ -54,7 +54,8 @@ class ClassVariantAuthorityTest extends TestCase
     #[Test]
     public function it_works()
     {
-        $cva = ClassVariantAuthority::base('text-sm px-3 py-2')
+        $cva = ClassVariantAuthority::make()
+            ->whereBase(['text-sm px-3', 'py-2'])
             ->addVariant(
                 Variant::make('color')
                     ->addOption(new Option('primary', 'bg-blue-100'))

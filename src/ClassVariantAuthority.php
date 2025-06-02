@@ -22,19 +22,25 @@ class ClassVariantAuthority
         public array $defaultVariants = [],
     ) {}
 
-    public static function base(string $base)
+    public static function make(): static
     {
-        return new static($base);
+        return new static;
     }
 
-    public function withConfig(Config $config): static
+    public static function withConfig(Config $config)
+    {
+        return (new static)
+            ->setConfig($config);
+    }
+
+    public function setConfig(Config $config): static
     {
         $this->config = $config;
 
         return $this;
     }
 
-    public function setBase(string $base): static
+    public function whereBase(string|array $base): static
     {
         $this->base = $base;
 
