@@ -85,7 +85,7 @@ class ClassVariantAuthorityTest extends TestCase
                 'color' => 'primary',
                 'size' => 'lg',
                 'class' => 'text-lg',
-                'invalid' => true
+                'invalid' => true,
             ])
         );
     }
