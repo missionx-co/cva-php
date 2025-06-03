@@ -13,9 +13,9 @@ class Variant
         return new static($name);
     }
 
-    public function add(string $name, string|array $classes): static
+    public function add($name, string|array $classes): static
     {
-        if (! is_string($name) || is_numeric($name) || empty($classes)) {
+        if (!$this->isValidOptionName($name) || empty($classes)) {
             return $this;
         }
 
@@ -26,7 +26,7 @@ class Variant
 
     public function addOption(Option $option)
     {
-        if (! is_string($option->name) || is_numeric($option->name) || empty($option->classes)) {
+        if (!$this->isValidOptionName($option->name) || empty($option->classes)) {
             return $this;
         }
 
@@ -68,10 +68,16 @@ class Variant
 
                 continue;
             }
-
             $variant->add($option, $classes);
         }
 
         return $variant;
+    }
+
+    protected function isValidOptionName($name)
+    {
+        return is_bool($name) ||
+            (is_int($name) && in_array($name, [0, 1])) ||
+            (is_string($name) && !is_numeric($name));
     }
 }

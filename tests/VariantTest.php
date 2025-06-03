@@ -42,6 +42,8 @@ class VariantTest extends TestCase
     {
         if (is_array($option)) {
             $this->variant->add($option['name'], $option['classes']);
+        } else {
+            $this->variant->addOption($option);
         }
 
         $this->assertFalse($this->variant->hasOptions());
@@ -50,13 +52,7 @@ class VariantTest extends TestCase
     public static function invalidOptionsDataProvider()
     {
         return [
-            'name is integer' => [
-                'option' => [
-                    'name' => 1,
-                    'classes' => 'bg-blue-100',
-                ],
-            ],
-            'name is numeric' => [
+            'name is numeric string' => [
                 'option' => [
                     'name' => '1',
                     'classes' => 'bg-blue-100',
@@ -68,10 +64,7 @@ class VariantTest extends TestCase
                     'classes' => [],
                 ],
             ],
-            'option name is integer' => [
-                'option' => new Option(1, 'bg-blue-100'),
-            ],
-            'option name is numeric' => [
+            'option name is numeric string' => [
                 'option' => new Option('1', 'bg-blue-100'),
             ],
             'option classes is empty' => [
@@ -86,7 +79,7 @@ class VariantTest extends TestCase
         $variant = Variant::parse('color', [
             'primary' => 'bg-blue-100',
             'success' => ['bg-green-100'],
-            '1' => ['invalid'],
+            '2' => ['invalid'],
         ]);
 
         $this->assertCount(2, $variant->options());

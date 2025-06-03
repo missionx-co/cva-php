@@ -65,6 +65,10 @@ class ClassVariantAuthorityTest extends TestCase
                     ->add('sm', 'px-2 py-1')
                     ->add('lg', 'px-4 py-3')
             )
+            ->addVariant(
+                Variant::make('invalid')
+                    ->add(true, 'text-red-500')
+            )
             ->addCompoundVariants(
                 CompoundVariants::make()
                     ->addCondition('color', 'primary')
@@ -75,11 +79,12 @@ class ClassVariantAuthorityTest extends TestCase
             ]);
 
         $this->assertEquals(
-            'bg-blue-100 px-4 py-3 border text-lg',
+            'bg-blue-100 px-4 py-3 text-red-500 border text-lg',
             $cva([
                 'color' => 'primary',
                 'size' => 'lg',
                 'class' => 'text-lg',
+                'invalid' => true
             ])
         );
     }
