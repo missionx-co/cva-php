@@ -71,8 +71,9 @@ class ClassVariantAuthorityTest extends TestCase
             )
             ->addCompoundVariants(
                 CompoundVariants::make()
-                    ->addCondition('color', 'primary')
-                    ->addCondition('size', 'lg')
+                    ->where('color', 'primary')
+                    ->where('size', 'lg')
+                    ->where('invalid', true)
                     ->setClasses('border')
             )->setDefaultVariants([
                 'size' => 'lg',

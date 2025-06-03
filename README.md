@@ -76,8 +76,8 @@ $button = ClassVariantAuthority::make()
     )
     ->addCompoundVariants(
         CompoundVariants::make()
-            ->addCondition('color', 'primary')
-            ->addCondition('size', 'lg')
+            ->where('color', 'primary')
+            ->where('size', 'lg')
             ->setClasses('font-bold')
     )
     ->setDefaultVariants([

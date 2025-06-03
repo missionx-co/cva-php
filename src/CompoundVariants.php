@@ -13,7 +13,7 @@ class CompoundVariants
         return new static;
     }
 
-    public function addCondition(string $option, string $value): static
+    public function where(string $option, $value): static
     {
         $this->conditions[$option] = $value;
 
@@ -80,7 +80,7 @@ class CompoundVariants
                 continue;
             }
 
-            $instance->addCondition($name, $value);
+            $instance->where($name, $value);
         }
 
         return $instance;
